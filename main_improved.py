@@ -5,14 +5,14 @@ os.environ["CHROMA_TELEMETRY"] = "False"
 os.environ["CHROMADB_TELEMETRY"] = "False"
 
 from src.ingestion import load_documents_from_folder
-from src.chunking import build_nodes
+from src.chunking_semantic import build_semantic_nodes
 from src.vector_store import create_or_load_index
 from src.retrieval import retrieve_context
 from src.generation import generate_answer
 
 
 DATA_FOLDER = "data/raw"
-PERSIST_DIR = "data/processed/chroma_db"
+PERSIST_DIR = "data/processed/chroma_db_improved"
 
 
 def build_rag_index():
@@ -24,11 +24,7 @@ def build_rag_index():
 
     print("Creazione dei chunk...")
 
-    nodes = build_nodes(
-        documents=documents,
-        chunk_size=350,
-        chunk_overlap=70,
-    )
+    nodes = build_semantic_nodes(documents)
 
     print(f"Chunk creati: {len(nodes)}")
 
@@ -55,7 +51,7 @@ def ask_question(index):
         retrieved_nodes = retrieve_context(
             index=index,
             question=question,
-            top_k=3,
+            top_k=2,
         )
 
         answer = generate_answer(

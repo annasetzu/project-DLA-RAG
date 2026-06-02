@@ -1,7 +1,5 @@
-import os
 from typing import List
 
-from dotenv import load_dotenv
 from llama_index.core.schema import NodeWithScore
 from llama_index.llms.ollama import Ollama
 
@@ -9,22 +7,31 @@ from llama_index.llms.ollama import Ollama
 SYSTEM_PROMPT = """
 Sei un assistente per il question answering su materiale universitario.
 
-Regole:
-- Rispondi solo usando il contesto fornito.
+Regole obbligatorie:
+- Rispondi sempre in italiano, anche se la domanda è in inglese.
+- Usa solo il contesto fornito.
 - Se la risposta non è presente nel contesto, dillo chiaramente.
 - Non inventare informazioni.
-- Rispondi in italiano.
+- Cita, quando possibile, i chunk o le fonti usate.
+- Formula una risposta chiara, sintetica e adatta a uno studente universitario.
 """
 
 
 def build_prompt(question: str, retrieved_nodes: List[NodeWithScore]) -> str:
-    """Build the final prompt using the retrieved context."""
+    """
+    Costruisce il prompt finale usando
+    domanda + chunk recuperati.
+    """
+
     context_parts = []
 
     for i, node in enumerate(retrieved_nodes, start=1):
         source = node.metadata.get("file_name", "documento sconosciuto")
         content = node.get_content()
-        context_parts.append(f"[Chunk {i} - Fonte: {source}]\n{content}")
+
+        context_parts.append(
+            f"[Chunk {i} - Fonte: {source}]\n{content}"
+        )
 
     context = "\n\n".join(context_parts)
 
@@ -39,20 +46,28 @@ Domanda:
 
 Risposta:
 """
+
     return prompt
 
 
-def generate_answer(question: str, retrieved_nodes: List[NodeWithScore]) -> str:
-    """Generate an answer using an LLM and the retrieved context."""
-    load_dotenv()
+def generate_answer(
+    question: str,
+    retrieved_nodes: List[NodeWithScore],
+) -> str:
+    """
+    Genera una risposta usando Ollama + Llama3.
+    """
 
-    if not os.getenv("OPENAI_API_KEY"):
-        raise EnvironmentError(
-            "OPENAI_API_KEY non trovata. Inseriscila nel file .env."
-        )
+    llm = Ollama(
+        model="llama3",
+        request_timeout=120.0,
+    )
 
-    llm = Ollama(model="llama3", request_timeout=120.0)
-    prompt = build_prompt(question, retrieved_nodes)
+    prompt = build_prompt(
+        question=question,
+        retrieved_nodes=retrieved_nodes,
+    )
 
     response = llm.complete(prompt)
+
     return str(response)

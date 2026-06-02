@@ -1,0 +1,1302 @@
+question,expected_answer,expected_keywords,base_answer,base_score,base_retrieved_chunks,improved_answer,improved_score,improved_retrieved_chunks
+Cosa è il gradient descent?,Il gradient descent minimizza la loss function seguendo il gradiente negativo.,"gradient,loss,ottimizzazione","Il gradient descent è un algoritmo di ottimizzazione usato per minimizzare una funzione di perdita (loss) in campo di machine learning. In particolare, è un metodo che utilizza l'informazione delle derivative parziali della funzione di perdita rispetto alle pesi dei parametri del modello, per calcolare il gradiente della funzione e successivamente applicare questo gradiente per update i parametri stessi.",1.0,"Introduction to Deep Learning
+
+--- Page 25 ---
+Gradient Descent : Single Training Sample
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 26 ---
+Gradient Descent : Single Training Sample
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 27 ---
+Gradient Descent : Single Training Sample
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 28 ---
+Gradient Descent : Single Training Sample
+Source: Niessner and Leal -Taixé , Intr
+
+--- Page 1 ---
+Optimization
+
+--- Page 2 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 4 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 5 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 6 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction
+
+1,
+-1.5,
+0.33,…]
+loss 1.25347 loss 1.25352[0.34,
+-1.11+0.0001,
+0.78,
+0.12,
+0.55,
+2.81,
+-3.1,
+-1.5,
+0.33,…][-2.5,
+0.6,
+?,
+?,
+?,
+?,
+?,
+?,
+?,…]W+h : (second dim)
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 18 ---
+Optimization
+Current W Gradient dW
+[0.34,
+-1.11,
+0.78,
+0.12,
+0.55,
+2.81,
+-3.1,
+-1.5,
+0.33,…]
+loss 1.25347 loss 1.25347[0.34,
+-1.11,
+0.78+0.0001,
+0.12,
+0.55,
+2.81,
+-3.1,
+-1.5,
+0.33,…][-2.5,
+0.6,
+0,
+?,
+?,
+?,
+?,
+","La risposta alla tua domanda è contenuta nel contesto recuperato.
+
+Il Gradient Descent (GD) è un algoritmo di ottimizzazione utilizzato per minimizzare o massimizzare una funzione obiettivo non lineare. È un metodo iterativo che si avvicina gradualmente alla soluzione ottima mediante la valutazione del gradiente della funzione obiettivo e il calcolo delle variazioni successive per arrivare alla minima (o maxima).",0.6666666666666666,"
+--- Page 1 ---
+Optimization
+
+--- Page 2 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 4 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 5 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 6 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introductio
+
+
+--- Page 1 ---
+Gradient Descent
+
+--- Page 2 ---
+Optimization
+Strategy #1: A first very bad idea solution: Random search
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 3 ---
+Optimization
+Strategy #1: A first very bad idea solution: Random search
+% assume X_train is the data where each row is an example
+% assume Y_train are the labels 
+% assume the function L evaluates the loss function
+bestloss = Inf; % the highest pos"
+Perché si usa il learning rate decay?,Il learning rate decay riduce progressivamente il learning rate per migliorare la convergenza.,"learning rate decay,training,convergenza","Secondo il contesto fornito, il learning rate decay è menzionato nel Chunk 1 (Fonte: training_NN.pdf) alla pagina 6 e successive. La motivazione per l'uso del learning rate decay è descritta come la necessità di aumentare il learning rate quando siamo ""lontani"" dalla soluzione ottimale e di ridurre il learning rate quando siamo ""vicini"". Ciò permette di evitare oscillazioni nella funzione di perdita durante l'addestramento del network neuronale.
+
+Inoltre, è importante notare che il learning rate decay è una strategia comune per gestire la convergenza dell'algoritmo di ottimizzazione durante l'addestramento dei network neurali.",1.0,"--- Page 1 ---
+Training Neural Networks
+
+--- Page 2 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 4 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 5 ---
+Learning Rate
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+Need high learning rate when far awa
+
+--- Page 50 ---
+ResNet
+•Xavier/2 initialization 
+•SGD + Momentum (0.9)
+•Learning rate 0.1, divided by 10 when plateau
+•Mini -batch size 256
+•Weight decay of 1e -5
+•No dropout ResNet -152: 60M parameters
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 51 ---
+Comparing complexity
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 52 ---
+Comparing complexity
+Inception -v4: Resnet + Inception !
+Adapt
+
+1,
+-1.5,
+0.33,…]
+loss 1.25347 loss 1.25352[0.34,
+-1.11+0.0001,
+0.78,
+0.12,
+0.55,
+2.81,
+-3.1,
+-1.5,
+0.33,…][-2.5,
+0.6,
+?,
+?,
+?,
+?,
+?,
+?,
+?,…]W+h : (second dim)
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 18 ---
+Optimization
+Current W Gradient dW
+[0.34,
+-1.11,
+0.78,
+0.12,
+0.55,
+2.81,
+-3.1,
+-1.5,
+0.33,…]
+loss 1.25347 loss 1.25347[0.34,
+-1.11,
+0.78+0.0001,
+0.12,
+0.55,
+2.81,
+-3.1,
+-1.5,
+0.33,…][-2.5,
+0.6,
+0,
+?,
+?,
+?,
+?,
+","La risposta è presente nel contesto fornito. Nel Chunk 1 - Fonte: training_NN.pdf, pagina 6, si legge: ""Learning Rate Decay / Manually specify learning rate for entire training process / •Manually set learning rate every n-epochs"". Questa tecnica viene utilizzata per ridurre il valore del learning rate nel corso dell'addestramento, in modo da evitare che il modello si apprenda troppo rapidamente e quindi possa non generalizzare bene ai dati di test.",0.6666666666666666,"
+--- Page 1 ---
+Training Neural Networks
+
+--- Page 2 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 4 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 5 ---
+Learning Rate
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+Need high learning rate when far aw
+
+
+--- Page 1 ---
+Optimization
+
+--- Page 2 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 4 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 5 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 6 ---
+Gradient Descent
+Source: Niessner and Leal -Taixé , Introductio"
+Qual è la differenza tra underfitting e overfitting?,L'underfitting indica alta bias mentre l'overfitting indica alta variance.,"underfitting,overfitting,bias,variance","La differenza tra underfitting e overfitting consiste nel fatto che l'underfitting si verifica quando il modello di apprendimento non riesce a rappresentare correttamente i pattern presenti nei dati d'addestramento, quindi commette errori anche sulle istanze di dati viste durante la fase di addestramento. D'altra parte, l'overfitting si verifica quando il modello è troppo speciale ai dati d'addestramento e non riesce a generalizzare correttamente ai nuovi esempi.
+
+Questo concept è riportato nel Chunk 1 - Fonte: Regularization.pdf, alle pagine 7-8, dove si parla di Underfitting and Overfitting in Polynomial Estimation.",0.5,"--- Page 1 ---
+Regularization
+
+--- Page 2 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 3 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 4 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Pre
+
+--- Page 9 ---
+Over -and Underfitting
+
+
+--- Page 10 ---
+Over -and Underfitting
+
+
+--- Page 11 ---
+Training a Neural Network
+Training/ Validation curve
+Training error
+toohigh Generalization 
+gap is too big
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 12 ---
+Training a Neural Network
+Training/ Validation curve
+How can we 
+prevent our model 
+from overfitting?
+Training error
+toohigh Generalization 
+gap is too big
+Source: Ian Goodfellow , Yoshua Beng
+
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 35 ---
+The Problem of Depth
+What happens when we continue stacking deeper layers on a “plain” 
+convolutional neural network?
+56-layer model performs worse on both training and test error 
+-> The deeper model performs worse, but it’s not caused by overfitting
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+","La differenza principale tra underfitting e overfitting consiste nel fatto che l'underfitting si verifica quando il modello di apprendimento non riesce a adattarsi al sufficiente ai dati disponibili, mentre l'overfitting si verifica quando il modello di apprendimento è troppo specifico e si adatta troppo bene ai rumori o alle casualità presenti nei dati di training.
+
+In altre parole, l'underfitting può essere visto come un problema di insufficiente capacità del modello per apprendere le relazioni tra i dati, mentre l'overfitting è un problema di eccessiva capacità che porta il modello a memorizzare i rumori piuttosto che imparare dalle regole generali.
+
+Questo concetto è stato esplorato nel Chunk 1, ""Regularization"", in particolare nella pagina 8-12, dove si discute la differenza tra underfitting e overfitting e come prevenirli.",0.5,"
+--- Page 1 ---
+Regularization
+
+--- Page 2 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 3 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 4 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Pr
+
+Source from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 58 ---
+Example : Hinge vs Cross -Entropy
+Model 3 has a clearly smaller loss
+Source from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 59 ---
+Source from: Niessner and Leal -Taixé , Introduction to Deep LearningExample : Hinge vs Cross -Entropy
+− Cross Entropy *always* wants to improve! (loss never 0) 
+− Hinge Loss saturates."
+Perché ReLU è preferita rispetto alla sigmoid?,ReLU riduce il problema del vanishing gradient ed è più efficiente.,"relu,sigmoid,vanishing gradient","La domanda chiede perché ReLU (Rectified Linear Units) sia preferita rispetto alla Sigmoid.
+
+Dalla lettura del contesto, notiamo che ReLU è menzionata come ""the standard choice"" e il Quick Guide suggerisce di scegliere ReLU o varianti di essa come seconda opzione. Ciò suggerisce che ReLU sia preferita rispetto alla Sigmoid.
+
+Inoltre, sulla pagina 51 del contesto, si specifica che iniziando i neuroni ReLU con biasi leggermente positive (0.01) è probabile che restino attivi per la maggior parte degli input. Ciò suggerisce che ReLU sia più stabile e facile da utilizzare rispetto alla Sigmoid.
+
+In conclusione, ReLU è preferita rispetto alla Sigmoid perché è un'attivazione lineare semplice e stabile, che offre una maggiore velocità di apprendimento e una maggiore stabilità durante il training del network.",0.6666666666666666,"ICML 2013] ] Maxout Networks 
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 55 ---
+Maxout Units
+Piecewise linear approximation of a convex function with N pieces
+[Goodfellow et al. ICML 2013] ] Maxout Networks 
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 56 ---
+Maxout Units
+Piecewise linear approximation of a convex function with N pieces
+[Goodfellow et al. ICML 2013] ] Maxout Networks 
+Source: Niessner and Leal -Taixé , Introduction to
+
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 44 ---
+Sigmoid Output notZero -centered
+It is going to be either positive or negative for all weights’ update.
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 45 ---
+Sigmoid Output notZero -centered
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 46 ---
+TanH Activation
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 47 ---
+Rectified Linear Un
+
+--- Page 31 ---
+Sigmoid Activation
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning𝑠=𝑤1𝑥1+𝑤2𝑥2+⋯+𝑤𝐷𝑥𝐷+𝑏
+
+--- Page 32 ---
+Sigmoid Activation
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning𝑠=𝑤1𝑥1+𝑤2𝑥2+⋯+𝑤𝐷𝑥𝐷+𝑏
+
+--- Page 33 ---
+Sigmoid Activation
+Active region for 
+gradient descent
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 34 ---
+Sigmoid Activation
+Output is always positive! 
+Sigmoid output provides positive 
+input for the next layer","La domanda non si basa sul contesto fornito, poiché non sono presenti informazioni sulla motivazione per cui ReLU sarebbe preferita rispetto alla sigmoid. Il contesto fornisce informazioni sulla ottimizzazione dei parametri mediante tecniche di apprendimento automatico, ma non menziona la preferenza per ReLU rispetto alla sigmoid.
+
+In base al chunk 1, è solo menzionato che le varianti di ReLU o Maxout sono una seconda scelta. Non c'è alcuna motivazione data per la preferenza per ReLU rispetto alla sigmoid. Quindi, non posso fornire una risposta precisa sulla questione.
+
+In generale, ReLU (Rectified Linear Unit) è una funzione di attivazione comune utilizzata in reti neurali deep e sigmoid è un'altra funzione di attivazione comune. Entrambe le funzioni hanno loro vantaggi e svantaggi, ma non esiste una motivazione specifica per cui ReLU sarebbe preferita rispetto alla sigmoid.",0.6666666666666666,"•Second choice are the variants of ReLU or Maxout . 
+
+
+
+--- Page 1 ---
+Gradient Descent
+
+--- Page 2 ---
+Optimization
+Strategy #1: A first very bad idea solution: Random search
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 3 ---
+Optimization
+Strategy #1: A first very bad idea solution: Random search
+% assume X_train is the data where each row is an example
+% assume Y_train are the labels 
+% assume the function L evaluates the loss function
+bestloss = Inf; % the highest pos"
+A cosa serve la regularization?,La regularization riduce l'overfitting penalizzando pesi troppo grandi.,"regularization,overfitting,L1,L2","La regularization (o regolarizzazione) è un metodo utilizzato per prevenire l'overfitting in modelli di learning profondo, come ad esempio i reti neurali convolutionali. L'overfitting si verifica quando un modello apprende i pattern del training set con troppa precisione, ma non generalizza bene ai dati nuovi.
+
+La regolarizzazione serves to prefer simpler models that generalize better. Secondo Niessner e Leal-Taixé (Introduction to Deep Learning), la regolarizzazione è importante perché ""it helps prevent overfitting by encouraging the model to learn more generalizable representations"" (pag. 38).
+
+Inoltre, Ranjay Krishna, Danfei Xu e Fei-Fei Li (CS231n: Convolutional Neural Networks for Visual Recognition) affermano che la regolarizzazione ""encourages the model to prefer simpler models that generalize better"" (pag. 16).",0.5,"Introduction to Deep Learning
+
+--- Page 35 ---
+Regularization : Example
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 36 ---
+Regularization : Effect
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 37 ---
+Regularization : Effect
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 38 ---
+Regularization
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 39 ---
+Regularization
+Source: Niessner and L
+
+Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 16 ---
+Regularization : Prefer Simpler Models
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 17 ---
+Regularization : Prefer Simpler Models
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 18 ---
+Regularization : Prefer Simpler Models
+Adapted from: 
+
+Introduction to Deep Learning
+
+--- Page 22 ---
+Regularization
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 23 ---
+Regularization
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 24 ---
+Regularization : Example
+•Input: 3 features 𝒙= [1, 2, 1]
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 25 ---
+Regularization : Example
+•Input: 3 features 𝒙= [1, 2, 1]
+•Two linear classifiers that give the same result: 
+Source: Nie","La regularizzazione (regolarizzazione) è una tecnica utilizzata per preferire modelli più semplici e evitare l'overfitting. Il suo scopo è quello di penalizzare i parametri del modello quando sono troppo grandi o complessi, in modo da favorire la selezione di soluzioni più semplici e generalizzabili.",0.25,"Regularization
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 14 ---
+Regularization : Prefer Simpler Models
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+
+--- Page 15 ---
+Regularization : Prefer Simpler Models
+Adapted from: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 16 ---
+Regularization : Prefer Simpler Models
+
+
+--- Page 1 ---
+Regularization
+
+--- Page 2 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 3 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 4 ---
+Underfitting and Overfitting in Polynomial 
+Estimation
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Pr"
+Cosa è una convoluzione 1x1?,La convoluzione 1x1 serve a ridurre o trasformare i canali mantenendo le dimensioni spaziali.,"1x1 convolution,channels,bottleneck","La domanda non è presente nel contesto fornito, quindi non posso trovare una risposta specifica sulle convoluzioni 1x1. Tuttavia, posso dire che le convoluzioni sono descritte nel contesto come ""Discrete case: box filter"" (Chunk 2) e ""‘Slide’ filter kernel from left to right; at each position, compute a single value in the output data."" (Chunk 2), ma non ci sono informazioni specifiche sulle convoluzioni 1x1.",0.0,"Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+But deeper, more non -linearities 
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 22 ---
+What are Convolutions ? 
+Discrete case: box filter
+‘Slide’ filter kernel from left to right; at each position, 
+compute a single value in the output data.
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 23 ---
+What are Convolutions ? 
+Discrete case: box filter
+‘Slide’ filter kernel from left to right; at each position, 
+compute a single value in the output data.
+Source: Niessner and Leal 
+
+Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+Adapted from: Amini and Soleimany , MIT 6.S191: Introduction to Deep Learning
+
+--- Page 15 ---
+Depth: Repeated Composition
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+Adapted from: Amini and Soleimany , MIT 6.S191: Introduction to Deep Learning
+
+--- Page 16 ---
+Depth: Repeated Composition
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+Adapted from: Amin","La domanda si basa sul contesto fornito. Non ci sono informazioni specifiche sulla convoluzione 1x1 nel contesto, quindi non posso rispondere direttamente.
+
+Tuttavia, dalle informazioni presenti nel contesto, possiamo dedurre che le convolutioni vengono utilizzate per catturare diverse caratteristiche dell'immagine. Le dimensioni dei filtri (filter width and height) sono menzionate come fattori importanti nella definizione di una convoluzione.
+
+In generale, le convolutioni con piccole dimensioni, come la 1x1, possono essere utilizzate per operare su ogni pixel dell'immagine e ottenere informazioni locali. Questo tipo di convoluzione potrebbe essere utilizzato per applicare un'operazione di normalizzazione o pooling locale.
+
+In sintesi, non ci sono informazioni specifiche sulla convoluzione 1x1 nel contesto, ma possiamo dedurre che potrebbe essere utilizzata per operare su ogni pixel dell'immagine e ottenere informazioni locali.",0.0,"Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 25 ---
+What are Convolutions ?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 26 ---
+Convolutions on Images
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 27 ---
+Image Filters
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 28 ---
+Convolutions on RGB Images
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 29 ---
+Co
+
+Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 33 ---
+VGGNet
+Q: Why use smaller filters? 
+Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 34 ---
+VGGNet
+Q: "
+Perché GoogLeNet usa i bottleneck layer?,I bottleneck layer riducono il costo computazionale usando convoluzioni 1x1.,"GoogLeNet,bottleneck,1x1","La risposta è presente nel contesto fornito. I bottleneck layers sono stati utilizzati in GoogLeNet per ridurre la dimensione del numero di canali (features) all'interno delle layer Inception, in modo da far aumentare il livello di profondità dell'architettura senza aumentare eccessivamente il costo computazionale. Ciò è stato possibile grazie alle operazioni di pooling che hanno mantenuto la profondità dei feature, evitando così l'aumento del costo computazionale (Chunk 3 - Page 25).",0.6666666666666666,"--- Page 14 ---
+Inception LayerConv Ops: 
+[5x5 conv , 32]   
+28x28x32x5x5x192=120M 
+Not sustainable
+Pooling layer also preserves feature depth, 
+which means total depth after 
+concatenation can only grow at every layer!Solution: “bottleneck” layers 
+that use 1x1 convolutions to 
+reduce feature channel size
+
+--- Page 15 ---
+Inception Layer: Computational Cost
+Multiplications: 5x5x200x32x32x92 ~ 470 million
+1 value of the output volume
+Source: Niessner and Leal -Taixé , Introduction to Deep Learni
+
+--- Page 1 ---
+CNN Architectures
+
+--- Page 2 ---
+ImageNet Benchmark
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+GoogLeNet
+Deeper networks, with computational efficiency 
+-22 layers 
+-Efficient “Inception” module 
+-Avoids expensive FC layers 
+-12x less params than AlexNet
+-27x less params than VGG -16
+-ILSVRC’14 classification winner (6.7% top 5 error)
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+
+Introduction to Deep Learning
+
+--- Page 18 ---
+Inception Layer: Computational Cost
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 19 ---
+Inception Layer: Computational Cost
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 20 ---
+Inception Layer: Computational Cost
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 21 ---
+Inception Layer: Computational Cost
+Source: Niessner and Leal -Taixé , Introduction to Deep Learnin","La risposta è presente nel contesto fornito.
+
+GoogLeNet utilizza i ""bottleneck"" layers per ridurre il numero di canali delle feature, ovvero per ridurre la complessità computazionale del modello. Ciò è stato necessario per affrontare il problema della crescita esponenziale dei parametri e dell'output volume nel caso in cui si utilizzino convoluzioni tradizionali con kernel di grandi dimensioni.
+
+In particolare, gli autori di GoogLeNet hanno introdotto i bottleneck layers utilizzando 1x1 convolutions per ridurre il numero di canali delle feature, quindi è stato possibile aumentare la profondità del modello senza aumentare esponenzialmente il numero di parametri e il costo computazionale.
+
+Questo approccio ha permesso a GoogLeNet di raggiungere un equilibrio tra profondità e complessità computazionale, consentendogli di raggiungere buoni risultati sulla ImageNet benchmark.",1.0,"
+--- Page 1 ---
+CNN Architectures
+
+--- Page 2 ---
+ImageNet Benchmark
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+GoogLeNet
+Deeper networks, with computational efficiency 
+-22 layers 
+-Efficient “Inception” module 
+-Avoids expensive FC layers 
+-12x less params than AlexNet
+-27x less params than VGG -16
+-ILSVRC’14 classification winner (6.7% top 5 error)
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+
+--- Page 1 ---
+Training Neural Networks
+
+--- Page 2 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 4 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 5 ---
+Learning Rate
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+Need high learning rate when far aw"
+Quale problema risolvono le ResNet?,Le ResNet risolvono il problema della degradazione nelle reti profonde usando residual blocks.,"ResNet,vanishing gradients,depth","Secondo il contesto fornito, le ResNets (Residual Networks) non sono specificamente illustrate come soluzione di un problema particolare. Tuttavia, si può notare che il loro funzionamento è motivato dalla possibilità di aggiungere una non-linearità ai blocchi residuali, garantendo miglioramenti prestazionali senza compromettere la performance (Chunk 1-3). Ciò suggerisce che le ResNets sono state progettate per superare i limiti delle reti neurali a singolo strato (chunk 3), come ad esempio il problema dell'XOR (Introduction.pdf, pag. 29).",0.3333333333333333,"--- Page 47 ---
+Why do ResNets Work?
+~zero ~zero
+We kept the same values and added a non -linearity•The identity is easy for the 
+residual block to learn
+•Guaranteed it will not hurt 
+performance, can only improve
+Adapted from : Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 48 ---
+Why do ResNets Work?
+~zero ~zero
+We kept the same values and added a non -linearity•The identity is easy for the 
+residual block to learn
+•Guaranteed it will not hurt 
+performance, can only improv
+
+~zero ~zero
+We kept the same values and added a non -linearity•The identity is easy for the 
+residual block to learn
+•Guaranteed it will not hurt 
+performance, can only improve
+Adapted from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 44 ---
+Why do ResNets Work?
+~zero ~zero
+We kept the same values and added a non -linearity•The identity is easy for the 
+residual block to learn
+•Guaranteed it will not hurt 
+performance, can only improve
+Adapted from : Niessner and Leal -Ta
+
+Showed 
+limitations of single layer models (e.g. cannot solve XOR).
+
+--- Page 29 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep LearningBack -propagation algorithm [ Rumelhart , Hinton, Williams 
+1986]. Practical way to train networks.
+
+--- Page 30 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 31 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 32 ---
+[Den","La risposta è: Le Residual Networks (ResNets) sono state progettate per risolvere il problema dell'overfitting, ovvero l'adattamento eccessivo dei modelli neurali ai dati di addestramento e la perdita di generalizzazione ai dati sconosciuti.",0.3333333333333333,"
+--- Page 1 ---
+Training Neural Networks
+
+--- Page 2 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 4 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 5 ---
+Learning Rate
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+Need high learning rate when far aw
+
+
+--- Page 1 ---
+Introduction
+
+--- Page 2 ---
+What isdeep learning ?
+Source: Amini and Soleimany , MIT 6.S191: Introduction to Deep Learning
+
+--- Page 3 ---
+Representation matters
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 4 ---
+Representation matters
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+
+--- Page 5 ---
+Representation matters
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Lea"
+Cosa sono i residual block?,I residual block aggiungono skip connections per facilitare il training di reti profonde.,"residual,skip connection,identity","Secondo il contesto fornito, un Residual Block è descritto come una sezione di rete neurale profonda che ha mantenuto lo stesso valore e aggiunto non-linearità. Ciò rende facile per il blocco residuo imparare l'identità e garantire che non ci sia alcun danno per le prestazioni, anzi potrebbe solo migliorarle.",0.3333333333333333,"Residual Block
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 37 ---
+Residual Block
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 38 ---
+Residual Block
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 39 ---
+Residual Block
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 40 ---
+Residual Block
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 41 ---
+Residual Block
+
+
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 41 ---
+Object Detection Progress
+Source: R. Fergus, Computer Vision
+
+--- Page 42 ---
+Source: R. Fergus, Computer Vision He, Zhang, Ren, & Sun. “Deep Residual Learning for Image 
+
+--- Page 43 ---
+Source: R. Fergus, Computer Vision He, Zhang, Ren, & Sun. “Deep Residual Learning for Image 
+
+--- Page 44 ---
+Why now ?
+Source: Amini and Soleimany , MIT 6.S191: Introduction to Deep Learning
+
+--- Page 45 ---
+Why now ?
+Source: Ami
+
+~zero ~zero
+We kept the same values and added a non -linearity•The identity is easy for the 
+residual block to learn
+•Guaranteed it will not hurt 
+performance, can only improve
+Adapted from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 44 ---
+Why do ResNets Work?
+~zero ~zero
+We kept the same values and added a non -linearity•The identity is easy for the 
+residual block to learn
+•Guaranteed it will not hurt 
+performance, can only improve
+Adapted from : Niessner and Leal -Ta","Nel contesto fornito, non è presente alcuna menzione a ""Residual Block"". Tuttavia, poiché la domanda si riferisce al contesto di rete neurali convoluzionali, posso dire che i residual block sono una tecnica comune utilizzata in queste reti per migliorare la capacità di apprendimento e l'efficacia del modello. In particolare, i residual block consistono in un insieme di strati di convoluzione e pooling, che permettono di apprendere più facilemente le feature complesse e aumentare la profondità della rete senza il rischio di perdere informazioni.
+
+In generale, i residual block sono stati introdotti da He et al. nel 2016 (He et al., 2016) come una soluzione per il problema del ""vanishing gradients"" nei deep neural networks, e hanno dimostrato di essere estremamente efficaci in vari compiti di riconoscimento visivo.",0.3333333333333333,"•Second choice are the variants of ReLU or Maxout . 
+
+
+Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 33 ---
+VGGNet
+Q: Why use smaller filters? 
+Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 34 ---
+VGGNet
+Q: "
+Qual è la differenza tra AlexNet e VGG?,VGG usa reti più profonde e filtri piccoli 3x3 rispetto ad AlexNet.,"AlexNet,VGG,3x3,depth","Grazie per avermi fornito il contesto. La domanda chiede di comprendere la differenza tra AlexNet e VGG. Dalle pagine 22-25 del Chunk 1, possiamo identificare le principali caratteristiche delle due reti neurali.
+
+In particolare, si nota che AlexNet è una rete molto più grande (~1000 volte) rispetto a LeNet, con l'utilizzo di ReLU invece di tanh/sigmoid e un numero complessivo di 60M parametri. Invece, VGGNet è una rete più piccola (138K parametri), con struttura Conv -> Pool -> Conv -> Pool -> Conv -> FC, nota come ""VGG-16"" a causa delle 16 layer che hanno pesi.
+
+In sintesi, la differenza tra AlexNet e VGG consiste nella grandezza della rete e nella sua struttura. While AlexNet è una rete più grande con un numero maggiore di parametri, VGGNet è una rete più piccola con una struttura più semplice.
+
+Risposta: La differenza tra AlexNet e VGG consiste nella grandezza della rete (AlexNet è molto più grande) e nella sua struttura (VGG ha una struttura Conv -> Pool -> Conv -> Pool -> Conv -> FC).",0.5,"NIPS’12] AlexNetSource: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 22 ---
+AlexNet
+As with LeNet : Width, Height    Number of Filters
+[Krizhevsky et al. NIPS’12] AlexNetSource: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 23 ---
+AlexNet
+Softmax for 1000 classes[Krizhevsky et al. NIPS’12] AlexNetSource: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 24 ---
+AlexNet
+Softmax for 1000 classesSimilar to LeNet but much bigger (~1000 times
+
+--- Page 30 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 31 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 32 ---
+[Deng et al. CVPR 2009]•~14 million labeled images, 20k classes
+•Images gathered from Internet
+•Human labels via Amazon Turk
+Source: R. Fergus, Computer VisionApplication: ImageNet
+
+--- Page 33 ---
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural N
+
+NIPS’12] AlexNetSource: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 18 ---
+AlexNet
+Use of same convolutions
+As with LeNet : Width, Height    Number of Filters
+[Krizhevsky et al. NIPS’12] AlexNetSource: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 19 ---
+AlexNet
+Use of same convolutions
+As with LeNet : Width, Height    Number of Filters
+[Krizhevsky et al. NIPS’12] AlexNetSource: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 20 ---
+","La differenza tra AlexNet e VGG è il tipo di convoluzioni utilizzate. In particolare, AlexNet utilizza convoluzioni di grandi dimensioni (7x7) con stride 2 e max pooling, mentre VGG utilizza convoluzioni più piccole (3x3) con stride 1, che vengono ripetute multiple volte per raggiungere la stessa area di ricezione.
+
+Come si legge nel contesto, infatti, ""Stack of three 3x3 conv (stride 1) layers has same effective receptive field as one 7x7 conv layer"" (Chunk 1). Ciò significa che, anche se AlexNet utilizza convoluzioni più grandi, VGG può raggiungere la stessa area di ricezione mediante l'utilizzo di convoluzioni più piccole e ripetute.",0.75,"Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 33 ---
+VGGNet
+Q: Why use smaller filters? 
+Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 34 ---
+VGGNet
+Q: 
+
+--- Page 27 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 28 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep LearningPerceptron book [Minsky and Pappert 1969]. Showed 
+limitations of single layer models (e.g. cannot solve XOR).
+
+--- Page 29 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep LearningBack -propagation algorithm [ Rumelhart , Hinton, Williams 
+1986]. Practical way"
+Perché VGG usa filtri 3x3?,Più convoluzioni 3x3 aumentano le non linearità mantenendo receptive field equivalenti.,"VGG,3x3,receptive field","Secondo il contesto fornito, l'architettura di VGG utilizza filtri 3x3 perché una pila di tre layer convoluzionali con filtri 3x3 (stride 1) ha lo stesso campo di ricezione efficace come un singolo layer convoluzionale con un filtro 7x7. Ciò è stato spiegato nella sezione ""Q: Why use smaller filters?"" della fonte CS231n: Convolutional Neural Networks for Visual Recognition (Fei-Fei Li, Ranjay Krishna, Danfei Xu).",0.6666666666666666,"Height      Number of Filters Called VGG -16: 16 layers that have weights 
+Large but simplicity makes it appealing138K parameters
+
+--- Page 26 ---
+VGGNetCONV = 3x3 filters with stride 1, 
+same convolutions 
+MAXPOOL = 2x2 filters with stride 2
+[Simonyan and Zisserman ICLR’15] VGGNetConv -> Pool -> Conv -> Pool -> Conv -> FC 
+As we go deeper: Width, Height      Number of Filters Called VGG -16: 16 layers that have weights 
+Large but simplicity makes it appealing138K parameters
+
+--- Page 27 ---
+VGG
+
+same convolutions 
+MAXPOOL = 2x2 filters with stride 2
+[Simonyan and Zisserman ICLR’15] VGGNetConv -> Pool -> Conv -> Pool -> Conv -> FC 
+As we go deeper: Width, Height      Number of Filters Called VGG -16: 16 layers that have weights 
+Large but simplicity makes it appealing138M parameters
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 29 ---
+VGGNetCONV = 3x3 filters with stride 1, 
+same convolutions 
+MAXPOOL = 2x2 filters with stride 2
+[Simonyan and Zisserman ICLR’1
+
+pad 1
+and 2x2 MAX POOL stride 2
+11.7% top 5 error in ILSVRC’13 ( ZFNet )
+-> 7.3% top 5 error in ILSVRC’14
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 31 ---
+VGGNet
+Q: Why use smaller filters? 
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 32 ---
+VGGNet
+Q: Why use smaller filters? 
+Stack of three 3x3 conv (stride 1) 
+layers has same effective receptiv","La risposta è presente nel contesto fornito. Infatti, nella sezione ""VGGNet"" (Chunk 1 e Chunk 2), si legge che un stack di tre layer convoluzionali 3x3 con stride 1 ha lo stesso campo di ricezione efficace di un'unica layer convoluzionale 7x7. Ciò suggerisce che l'uso di filtri più piccoli (3x3) è una scelta razionale per raggiungere lo stesso effetto di ricezione, ma con la possibilità di introdurre ulteriori non-linearità grazie alla profondità delle reti neurali.",0.6666666666666666,"Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 33 ---
+VGGNet
+Q: Why use smaller filters? 
+Stack of three 3x3 conv (stride 1) 
+layers has same effective receptive 
+field as one 7x7 conv layer
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 34 ---
+VGGNet
+Q: 
+
+
+--- Page 1 ---
+Classic Architectures
+
+--- Page 2 ---
+LeNet
+Digit recognition : 10 classes
+Input: 32 ×32 
+grayscale 
+imagesValid convolution:
+size shrinks
+6 conv filters in the 
+first layerAverage pooling 
+was used, now 
+max pooling is 
+much more 
+common
+Again valid 
+convolutions, how 
+many filters? Use of tanh/sigmoid 
+activations: not 
+common now! 
+Conv -> Pool -> Conv -> Pool -> Conv -> FC 
+As we go deeper: Width, Height    Number of Filters60K parameters
+Source: Niessner and Leal -Taixé , In"
+Cosa è la semantic segmentation?,La semantic segmentation assegna una classe a ogni pixel dell'immagine.,"semantic segmentation,pixel","La semantic segmentation è un'idea presentata nel contesto fornito, che consiste nel designare una rete neurale con solo layer di convoluzione senza operatori di ridimensionamento per fare predizioni per pixel contemporaneamente. Ciò si può desumere da Chunk 1 e Chunk 2 della fonte CNN_2.pdf.",1.0,"--- Page 68 ---
+Semantic Segmentation Idea: Fully 
+Convolutional
+Problem: convolutions at 
+original image resolution will 
+be very expensive
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual RecognitionDesign a network with only convolutional layers 
+without downsampling operators to make 
+predictions for pixels all at once!
+
+Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 64 ---
+Semantic Segmentation Idea: Sliding Window
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual RecognitionProblem: Very inefficient! 
+Not reusing shared features 
+between overlapping patches
+
+--- Page 65 ---
+Semantic Segmentation Idea: Convolution
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page
+
+Problem: convolutions at 
+original image resolution will 
+be very expensive
+
+--- Page 69 ---
+Semantic Segmentation Idea: Fully 
+Convolutional
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 70 ---
+Semantic Segmentation Idea: Fully 
+Convolutional
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 71 ---
+Semantic Segmentation Idea: Fully 
+Convolutional
+Source: ","La semantic segmentation è un tipo di etichettatura automatica dei pixel in un'immagine, che assegna a ogni pixels una etichetta di categoria senza distinguere tra istanze. Ciò significa che non si cerca di identificare specifiche istanze all'interno della categoria, ma solo di classificare i pixel come appartenenti a una certa categoria (ad esempio, ""auto"" o ""pista ciclabile"").",1.0,"Dimensions at the top of the box. 
+White boxes are the copied 
+feature maps.
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 77 ---
+Semantic Segmentation
+Label each pixel in the image 
+with a category label 
+Don’t differentiate 
+instances, only care about 
+pixels
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 78 ---
+Semantic Segmentation
+Label each pixel in the image 
+with a category label 
+Don’t d
+
+
+--- Page 1 ---
+Image Classification
+
+--- Page 2 ---
+Image Classification
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 3 ---
+The Problem : Semantic Gap
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 4 ---
+Challenges : Viewpoint variation
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Pa"
+Cosa è U-Net?,U-Net è un’architettura encoder-decoder con skip connections per segmentation.,"u-net,segmentation,encoder-decoder","La risposta non è presente nel contesto fornito. Il contesto riguarda l'introduzione al deep learning, alla storia di questo campo e ai concetti di base per la formazione di reti neurali convoluzionali (CNN). Non ci sono menzioni specifiche su U-Net, un tipo di rete neurale autoencoder utilizzato comunemente in applicazioni d'immagini.",0.3333333333333333,"--- Page 30 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 31 ---
+Deep Learning History
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 32 ---
+[Deng et al. CVPR 2009]•~14 million labeled images, 20k classes
+•Images gathered from Internet
+•Human labels via Amazon Turk
+Source: R. Fergus, Computer VisionApplication: ImageNet
+
+--- Page 33 ---
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural N
+
+•Trial and error (the hard way) 
+•Some experience (only generalizes to some degree) 
+•Consider: #epochs, training set size, network size, etc.
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 9 ---
+Basic Recipe for Training
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 10 ---
+Learning
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 11 ---
+Learning
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--
+
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 10 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 11 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 12 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 13 ---
+Why not simply more Layers?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- P","Non ci sono informazioni sulla U-Net nel contesto fornito. Il contesto riguarda il training di reti neurali e non menziona la U-Net. Quindi, non posso fornire una risposta sulla U-Net poiché essa non è presente nel contesto.",0.3333333333333333,"
+--- Page 1 ---
+Training Neural Networks
+
+--- Page 2 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 3 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 4 ---
+Learning Rate: Implications
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+
+--- Page 5 ---
+Learning Rate
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+Need high learning rate when far aw
+
+•Second choice are the variants of ReLU or Maxout . 
+"
+Qual è il vantaggio delle depthwise separable convolutions?,Ridurre il costo computazionale rispetto alle convoluzioni standard.,"depthwise separable,costo computazionale","Secondo il contesto, il vantaggio delle depth-wise separable convolutions è di ridurre la complessità computazionale e l'utilizzo di parametri. Ciò è descritto nella pagina 30 del Chunk 1: ""Depth-wise separable convolutions"" (Source: Niessner and Leal -Taixé , Introduction to Deep Learning).",0.0,"Adapted from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 29 ---
+Depth -wise separable convolutions
+Normal convolutions act 
+on all channels. 
+Filters are applied only at 
+certain depths of the features. 
+Adapted from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 30 ---
+Depth -wise separable convolutions
+1x1 convs
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 31 ---
+Computational Cost
+Source: Niessner and Leal -Taixé , Int
+
+--- Page 1 ---
+Convolutional Neural
+Networks
+
+--- Page 2 ---
+Using CNNs in Computer Vision 
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 3 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 4 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 5 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction t
+
+Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+Adapted from: Amini and Soleimany , MIT 6.S191: Introduction to Deep Learning
+
+--- Page 15 ---
+Depth: Repeated Composition
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+Adapted from: Amini and Soleimany , MIT 6.S191: Introduction to Deep Learning
+
+--- Page 16 ---
+Depth: Repeated Composition
+Source: Ian Goodfellow , Yoshua Bengio and Aaron Courville , Deep Learning, MIT Press 
+Adapted from: Amin","Il vantaggio principale delle depthwise separable convolutions (anche conosciute come Xception) è la riduzione del costo computazionale. In questo tipo di convoluzioni, i filtri sono applicati solo ai canali di features specifici alla volta, anziché su tutti i canali contemporaneamente. Ciò consente di mantenere le prestazioni della rete neurale senza aumentare significativamente il costo computazionale.
+
+Inoltre, le depthwise separable convolutions possono essere utilizzate per ottenere una maggiore efficienza computazionale e ridurre la quantità di parametri necessari per l'apprendimento del modello. Ciò è particolarmente utile quando si lavora con reti neurali profonde o con dati di grande dimensione.
+
+In sintesi, le depthwise separable convolutions offrono una soluzione efficiente e scalabile per il calcolo delle convoluzioni in Deep Learning.",1.0,"
+--- Page 1 ---
+Convolutional Neural
+Networks
+
+--- Page 2 ---
+Using CNNs in Computer Vision 
+Source: Fei -Fei Li, Ranjay Krishna, Danfei Xu, CS231n: Convolutional Neural Networks for Visual Recognition
+
+--- Page 3 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 4 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 5 ---
+What do we know so far?
+Source: Niessner and Leal -Taixé , Introduction 
+
+Adapted from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 29 ---
+Depth -wise separable convolutions
+Normal convolutions act 
+on all channels. 
+Filters are applied only at 
+certain depths of the features. 
+Adapted from: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 30 ---
+Depth -wise separable convolutions
+1x1 convs
+Source: Niessner and Leal -Taixé , Introduction to Deep Learning
+
+--- Page 31 ---
+Computational Cost
+Source: Niessner and Leal -Taixé , Int"
