@@ -1,0 +1,53 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# MacOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Streamlit cache
+.streamlit/
+
+# ChromaDB persistence
+data/processed/
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary files
+tmp/
+temp/
+
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Local model/cache files
+.cache/
+hf_cache/
+
+# SQLite
+*.sqlite3
