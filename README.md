@@ -201,3 +201,45 @@ rag-university-qa/
 ├── main.py
 ├── requirements.txt
 └── README.md
+```
+
+---
+
+# Installazione
+
+## 1. Clonare il repository
+- `git clone <repository_url>`
+- `cd rag-university-qa`
+
+## 2. Creare ambiente virtuale
+- `python -m venv .venv`
+- `source .venv/bin/activate` (su Windows: `.venv\Scripts\activate`)
+
+## 3. Installare le dipendenze
+- `pip install -r requirements.txt`
+
+## 4. Installare Ollama
+https://ollama.com/
+
+## 5. Scaricare il modello Llama3
+- `ollama pull llama3`
+
+---
+
+# Avvio del progetto
+Inserire i documenti PDF/TXT nella cartella: `data/raw/`
+
+Avvio da terminale: `python main.py`
+
+Avvio interfaccia Streamlit: `streamlit run app.py`
+
+---
+
+# Esempio di utilizzo
+Domanda: Che cos'è una rete neurale convoluzionale?
+
+Il sistema:
+
+1. recupera i chunk più rilevanti;
+2. genera una risposta basata sul contesto;
+3. mostra anche i chunk recuperati.
