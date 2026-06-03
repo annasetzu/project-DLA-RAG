@@ -315,6 +315,6 @@ Il sistema:
 # Repository
 
 ```
-[https://github.com/annasetzu/project-DLA-RAG.git](https://github.com/annasetzu/project-DLA-RAG.git)
+https://github.com/annasetzu/project-DLA-RAG.git
 ```
 
