@@ -1,3 +1,10 @@
+"""
+Document ingestion module.
+
+Loads PDF/TXT university material
+used by the RAG pipeline.
+"""
+
 from pathlib import Path
 from typing import List
 
@@ -32,7 +39,13 @@ def load_pdf_file(file_path: Path) -> Document:
 
 
 def load_documents_from_folder(folder_path: str) -> List[Document]:
-    """Load all PDF and TXT files from a folder."""
+    """
+    Loads all supported documents from a folder.
+
+    The function scans the input directory and reads PDF/TXT files,
+
+    converting them into LlamaIndex Document objects.
+    """
     folder = Path(folder_path)
 
     if not folder.exists():

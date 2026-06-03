@@ -1,7 +1,15 @@
+"""
+Answer generation module.
+
+Uses a local LLM through Ollama
+to generate grounded answers.
+"""
+
 from typing import List
 
 from llama_index.core.schema import NodeWithScore
 from llama_index.llms.ollama import Ollama
+from src.config import LLM_MODEL
 
 
 SYSTEM_PROMPT = """
@@ -19,8 +27,10 @@ Regole obbligatorie:
 
 def build_prompt(question: str, retrieved_nodes: List[NodeWithScore]) -> str:
     """
-    Costruisce il prompt finale usando
-    domanda + chunk recuperati.
+    Builds the final prompt for the language model.
+    The prompt contains the system instructions, the retrieved context,
+    and the user question. This helps the LLM generate an answer grounded
+    in the retrieved documents.
     """
 
     context_parts = []
@@ -55,11 +65,14 @@ def generate_answer(
     retrieved_nodes: List[NodeWithScore],
 ) -> str:
     """
-    Genera una risposta usando Ollama + Llama3.
+    Generates an answer using a local LLM.
+    The function sends the constructed prompt to Ollama and returns
+    the generated response. The model is instructed to answer only
+    using the retrieved context.
     """
 
     llm = Ollama(
-        model="llama3",
+        model=LLM_MODEL,
         request_timeout=120.0,
     )
 

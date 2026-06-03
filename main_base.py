@@ -1,27 +1,27 @@
 """
-Improved RAG pipeline.
+Baseline RAG pipeline.
 
-Uses semantic chunking and
-optimized retrieval configuration.
+Uses fixed-size chunking and
+standard retrieval configuration.
 """
 
 from src.pipeline import (
-    build_improved_pipeline,
+    build_base_pipeline,
     query_pipeline,
 )
 
-from src.config import IMPROVED_TOP_K
+from src.config import BASE_TOP_K
 
 
 def main():
     print("\n==============================")
-    print("IMPROVED RAG PIPELINE")
+    print("BASELINE RAG PIPELINE")
     print("==============================\n")
 
-    print("Building improved pipeline...")
-    index = build_improved_pipeline()
+    print("Building baseline pipeline...")
+    index = build_base_pipeline()
 
-    print("Improved pipeline ready.")
+    print("Baseline pipeline ready.")
 
     while True:
         question = input(
@@ -34,7 +34,7 @@ def main():
         answer, retrieved_nodes = query_pipeline(
             index=index,
             question=question,
-            top_k=IMPROVED_TOP_K,
+            top_k=BASE_TOP_K,
         )
 
         print("\nRISPOSTA:\n")

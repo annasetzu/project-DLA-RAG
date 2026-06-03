@@ -1,3 +1,10 @@
+"""
+Retrieval module.
+
+Retrieves the most relevant chunks
+given a user query.
+"""
+
 from typing import List
 
 from llama_index.core import VectorStoreIndex
@@ -9,7 +16,12 @@ def retrieve_context(
     question: str,
     top_k: int = 3,
 ) -> List[NodeWithScore]:
-    """Retrieve the most relevant chunks for a user question."""
+    """
+    Retrieves the most relevant chunks for a user question.
+    The query is embedded and compared with stored chunk embeddings.
+    The top_k most similar chunks are returned and later used as context
+    for answer generation.
+    """
     retriever = index.as_retriever(similarity_top_k=top_k)
     retrieved_nodes = retriever.retrieve(question)
     return retrieved_nodes

@@ -1,3 +1,10 @@
+"""
+Baseline chunking strategy.
+
+Uses fixed-size chunking with overlap
+through SentenceSplitter.
+"""
+
 from typing import List
 
 from llama_index.core import Document
@@ -10,6 +17,12 @@ def build_nodes(
     chunk_size: int = 350,
     chunk_overlap: int = 70,
 ) -> List[BaseNode]:
+    """
+    Splits documents into fixed-size text chunks.
+    This represents the baseline chunking strategy.
+    Each chunk has a predefined size and an overlap with the previous one
+    to preserve part of the local context.
+    """
     splitter = SentenceSplitter(
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,

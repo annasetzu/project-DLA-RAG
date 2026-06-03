@@ -1,3 +1,10 @@
+"""
+Vector database management module.
+
+Stores and retrieves embeddings
+through ChromaDB.
+"""
+
 from pathlib import Path
 from typing import List, Optional
 
@@ -18,13 +25,10 @@ def create_or_load_index(
     rebuild: bool = False,
 ) -> VectorStoreIndex:
     """
-    Crea oppure carica un indice vettoriale usando ChromaDB.
-
-    rebuild=True:
-        cancella la collection precedente e crea un nuovo indice dai chunk.
-
-    rebuild=False:
-        carica la collection ChromaDB già esistente.
+    Creates or loads a ChromaDB-backed vector index.
+    If rebuild=True, the previous collection is deleted and a new index
+    is created from the provided nodes.
+    If rebuild=False, the existing persisted ChromaDB collection is loaded.
     """
 
     Settings.embed_model = get_embedding_model()
