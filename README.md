@@ -6,6 +6,8 @@ L’obiettivo del progetto è sviluppare un sistema basato su Retrieval-Augmente
 
 Il sistema permette all’utente di caricare documenti e porre domande in linguaggio naturale, generando risposte contestualizzate tramite retrieval semantico e Large Language Models open-source eseguiti localmente.
 
+Il progetto contiene anche un report in markdown dove viene spiegato più approfonditamente.
+
 ---
 
 # Features
