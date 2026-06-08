@@ -24,7 +24,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("📚 RAG-based University QA System")
+st.title("RAG-based University QA System")
 
 st.markdown("""
 This application compares:
@@ -41,7 +41,7 @@ using Retrieval-Augmented Generation (RAG).
 # SIDEBAR
 # -----------------------------
 
-st.sidebar.title("⚙️ Configuration")
+st.sidebar.title("Configuration")
 
 pipeline_type = st.sidebar.selectbox(
     "Select pipeline",
@@ -147,7 +147,7 @@ with st.spinner("Loading RAG pipelines..."):
 # -----------------------------
 
 question = st.text_input(
-    "❓ Ask a question about the uploaded university material:"
+    "Ask a question about the uploaded university material:"
 )
 
 # -----------------------------
@@ -222,10 +222,10 @@ if st.button("Generate Answer"):
 
         st.success("Answer generated successfully.")
 
-        st.subheader("🧠 Generated Answer")
+        st.subheader("Generated Answer")
         st.write(answer)
 
-        st.subheader("📄 Retrieved Chunks")
+        st.subheader("Retrieved Chunks")
 
         for i, node in enumerate(retrieved_nodes, start=1):
             with st.expander(f"Chunk {i}"):

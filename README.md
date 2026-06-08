@@ -215,6 +215,8 @@ project-DLA-RAG/
 
 ## 2. Creare ambiente virtuale
 
+Versione python utilizzata e consigliata: 3.11.15
+
 ```python -m venv .venv ```
 
 Attivazione ambiente virtuale:
