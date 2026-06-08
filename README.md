@@ -165,10 +165,12 @@ Aspetti valutati:
 
 | Pipeline | Chunking Strategy | Score medio |
 |---|---|---|
-| Baseline RAG | Fixed-size chunking | 0.536 |
-| Improved RAG | Semantic chunking | 0.583 |
+| Baseline RAG | Fixed-size chunking | 0.583 |
+| Improved RAG | Semantic chunking | 0.506 |
 
-La pipeline improved ottiene risultati mediamente migliori rispetto alla baseline.
+In questa valutazione la pipeline baseline ha ottenuto uno score medio superiore rispetto alla pipeline improved.
+
+Questo risultato suggerisce che, sul dataset utilizzato, il semantic chunking non ha prodotto un miglioramento quantitativo generale. Una possibile spiegazione è che le slide contengono poco testo e informazioni molto frammentate: in questo scenario, chunk più piccoli e fissi possono risultare più efficaci per query specifiche.
 
 ---
 

@@ -17,7 +17,7 @@ Il progetto confronta due pipeline differenti:
 - una pipeline baseline basata su fixed-size chunking;
 - una pipeline migliorata basata su semantic chunking.
 
-Le performance vengono valutate tramite un benchmark di domande costruito sui documenti caricati.
+Le performance vengono valutate tramite un benchmark di domande costruito sui documenti caricati (attualmente, sono state caricate le slide della prima parte del corso Deep Learning Applications).
 
 ---
 
@@ -256,28 +256,20 @@ L’intera pipeline è stata eseguita offline senza utilizzo di API cloud propri
 
 | Pipeline | Chunking Strategy | Score medio |
 |---|---|---|
-| Baseline RAG | Fixed-size chunking | 0.536 |
-| Improved RAG | Semantic chunking | 0.583 |
+| Baseline RAG | Fixed-size chunking | 0.583 |
+| Improved RAG | Semantic chunking | 0.506 |
 
-La pipeline migliorata ottiene risultati mediamente superiori rispetto alla baseline.
+In questa valutazione la pipeline baseline ha ottenuto uno score medio superiore rispetto alla pipeline improved.
 
 ---
 
 ## 9.2 Analisi qualitativa
 
-Il semantic chunking ha mostrato diversi vantaggi:
+I risultati mostrano che il semantic chunking non produce necessariamente un miglioramento generale delle performance.
 
-- retrieval più coerente;
-- migliore continuità tra slide consecutive;
-- riduzione della frammentazione del contesto.
+Sebbene in alcune query il retrieval risulti più coerente dal punto di vista semantico, la pipeline baseline ha ottenuto uno score medio superiore nel benchmark utilizzato.
 
-I miglioramenti sono stati particolarmente evidenti per domande riguardanti:
-
-- CNN architectures;
-- residual blocks;
-- semantic segmentation;
-- GoogLeNet;
-- U-Net.
+Questo suggerisce che, nel caso di slide universitarie sintetiche e fortemente frammentate, chunk di dimensione fissa possono risultare più efficaci per recuperare informazioni molto specifiche.
 
 ---
 
@@ -315,7 +307,7 @@ Il semantic chunking genera chunk più ampi e generici, riducendo la precisione 
 
 # 10. Discussione
 
-I risultati ottenuti mostrano che il semantic chunking può migliorare la qualità del retrieval e delle risposte generate.
+I risultati ottenuti mostrano che il semantic chunking non garantisce necessariamente un miglioramento delle performance rispetto a strategie di chunking tradizionali.
 
 Tuttavia, il miglioramento non è uniforme per tutte le query.
 
@@ -348,16 +340,11 @@ Infine, il sistema utilizza esclusivamente retrieval testuale e non considera im
 
 # 11. Conclusioni
 
-In questo progetto è stato sviluppato un sistema RAG completo per il Question Answering su materiale universitario.
+I risultati sperimentali mostrano che la pipeline baseline ottiene uno score medio superiore rispetto alla pipeline improved sul benchmark considerato.
 
-Il progetto ha mostrato:
+Questo evidenzia come la scelta della strategia di chunking dipenda fortemente dalla natura dei documenti analizzati e dal tipo di informazioni che si desidera recuperare.
 
-- utilizzo efficace di retrieval semantico;
-- integrazione tra embeddings, vector databases e LLM;
-- confronto sperimentale tra due pipeline RAG;
-- vantaggi e limiti del semantic chunking.
-
-I risultati sperimentali mostrano un miglioramento della pipeline migliorata rispetto alla baseline, pur evidenziando alcuni tradeoff legati alla struttura del dataset e alla granularità del retrieval.
+Il progetto conferma quindi l'importanza della valutazione sperimentale nei sistemi RAG e mostra che tecniche più sofisticate, come il semantic chunking, non garantiscono automaticamente risultati migliori.
 
 ---
 
