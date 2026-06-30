@@ -233,16 +233,48 @@ Per valutare le performance del sistema è stato costruito un benchmark di doman
 
 Per ogni domanda vengono definite:
 
-- keywords attese;
-- risposta attesa.
+- una risposta attesa;
+- un insieme di keyword attese;
+- il documento di riferimento contenente la risposta.
 
-La metrica utilizzata è una semplice keyword-based evaluation.
+Sono state utilizzate due metriche complementari:
 
-Lo score finale rappresenta la frazione di keywords attese presenti nella risposta generata.
+- **Keyword Score**, che valuta la qualità end-to-end della pipeline RAG verificando la presenza delle keyword attese nella risposta generata;
+- **Hit@k**, che valuta esclusivamente la qualità del retrieval verificando se almeno uno dei chunk recuperati appartiene al documento corretto.
 
+L'utilizzo congiunto delle due metriche permette di distinguere la qualità del recupero delle informazioni dalla qualità della risposta finale generata dal Large Language Model.
 ---
 
-## 8.1 Ambiente di esecuzione
+## 8.1 Metriche di valutazione
+
+### Keyword Score
+
+Per ogni domanda viene definito un insieme di keyword considerate essenziali.
+Il benchmark è composto da 30 domande distribuite sui principali argomenti delle slide del corso, tra cui Deep Learning, CNN, ottimizzazione, regularization e training delle reti neurali.
+
+Lo score della risposta viene calcolato come:
+
+Keyword Score = keyword trovate / keyword attese
+
+Lo score finale della pipeline corrisponde alla media degli score ottenuti su tutte le domande del benchmark.
+
+Questa metrica valuta la qualità complessiva della pipeline RAG, considerando sia il retrieval sia la generazione della risposta.
+
+### Hit@k
+
+Per ogni domanda viene definito il documento che contiene la risposta corretta.
+
+Hit@k assume valore:
+
+- 1 se almeno uno dei chunk recuperati appartiene al documento corretto;
+- 0 altrimenti.
+
+Lo score finale è ottenuto calcolando la media dei valori su tutte le domande.
+
+Questa metrica valuta esclusivamente la qualità del retrieval, indipendentemente dal comportamento del Large Language Model.
+---
+
+## 8.2 Ambiente di esecuzione
 
 Il progetto è stato eseguito localmente su Apple Silicon tramite Ollama.
 
@@ -254,22 +286,26 @@ L’intera pipeline è stata eseguita offline senza utilizzo di API cloud propri
 
 ## 9.1 Score medio
 
-| Pipeline | Chunking Strategy | Score medio |
-|---|---|---|
-| Baseline RAG | Fixed-size chunking | 0.583 |
-| Improved RAG | Semantic chunking | 0.506 |
+| Pipeline | Keyword Score | Hit@k |
+|-----------|--------------:|------:|
+| Baseline RAG | 0.443 | 0.867 |
+| Improved RAG | 0.427 | 0.733 |
 
-In questa valutazione la pipeline baseline ha ottenuto uno score medio superiore rispetto alla pipeline improved.
+La pipeline baseline ottiene risultati superiori sia nel Keyword Score sia nella metrica Hit@k.
+
+Ciò indica che, sul benchmark utilizzato, la pipeline baseline recupera più frequentemente i documenti corretti e genera risposte che contengono una percentuale leggermente maggiore delle informazioni attese.
 
 ---
 
 ## 9.2 Analisi qualitativa
 
-I risultati mostrano che il semantic chunking non produce necessariamente un miglioramento generale delle performance.
+L'analisi qualitativa conferma quanto osservato dalle metriche quantitative.
 
-Sebbene in alcune query il retrieval risulti più coerente dal punto di vista semantico, la pipeline baseline ha ottenuto uno score medio superiore nel benchmark utilizzato.
+La pipeline baseline recupera più frequentemente i documenti corretti (Hit@k = 0.867) e ottiene anche uno score medio leggermente superiore nella qualità delle risposte generate.
 
-Questo suggerisce che, nel caso di slide universitarie sintetiche e fortemente frammentate, chunk di dimensione fissa possono risultare più efficaci per recuperare informazioni molto specifiche.
+Il semantic chunking produce talvolta chunk semanticamente più coerenti, ma nel caso di slide universitarie sintetiche tende a creare chunk più ampi e meno specifici, riducendo la precisione del retrieval per domande molto focalizzate.
+
+Questo risultato evidenzia come l'efficacia della strategia di chunking dipenda fortemente dalla struttura dei documenti analizzati.
 
 ---
 
@@ -307,9 +343,9 @@ Il semantic chunking genera chunk più ampi e generici, riducendo la precisione 
 
 # 10. Discussione
 
-I risultati ottenuti mostrano che il semantic chunking non garantisce necessariamente un miglioramento delle performance rispetto a strategie di chunking tradizionali.
+La valutazione sperimentale mostra che la pipeline baseline ottiene prestazioni superiori sia nella qualità del retrieval sia nella qualità delle risposte generate.
 
-Tuttavia, il miglioramento non è uniforme per tutte le query.
+La metrica Hit@k evidenzia infatti una maggiore capacità della pipeline baseline di recuperare il documento corretto, mentre il Keyword Score mostra un leggero vantaggio anche nella qualità complessiva delle risposte prodotte.
 
 Questo comportamento evidenzia un importante tradeoff tra:
 
@@ -330,7 +366,7 @@ Il progetto mostra quindi come le performance di una pipeline RAG dipendano fort
 
 Il progetto presenta alcune limitazioni.
 
-La valutazione è stata effettuata tramite una semplice keyword-based evaluation, che non misura completamente la qualità semantica delle risposte generate.
+La valutazione quantitativa è stata effettuata tramite Keyword Score e Hit@k. Sebbene queste metriche forniscano una buona indicazione della qualità del sistema, non misurano completamente aspetti quali correttezza semantica, completezza della risposta e capacità di ragionamento del modello.
 
 Inoltre, il dataset utilizzato è relativamente piccolo ed è composto principalmente da slide sintetiche, caratterizzate da poco testo e forte dipendenza dal contesto visivo.
 
@@ -340,11 +376,23 @@ Infine, il sistema utilizza esclusivamente retrieval testuale e non considera im
 
 # 11. Conclusioni
 
-I risultati sperimentali mostrano che la pipeline baseline ottiene uno score medio superiore rispetto alla pipeline improved sul benchmark considerato.
+In questo progetto è stato sviluppato un sistema di Retrieval-Augmented Generation per il Question Answering su materiale universitario.
 
-Questo evidenzia come la scelta della strategia di chunking dipenda fortemente dalla natura dei documenti analizzati e dal tipo di informazioni che si desidera recuperare.
+Sono state implementate e confrontate due pipeline differenti:
 
-Il progetto conferma quindi l'importanza della valutazione sperimentale nei sistemi RAG e mostra che tecniche più sofisticate, come il semantic chunking, non garantiscono automaticamente risultati migliori.
+- una baseline basata su fixed-size chunking;
+- una improved basata su semantic chunking.
+
+Per la valutazione sono state utilizzate due metriche complementari:
+
+- Keyword Score, che misura la qualità end-to-end della pipeline;
+- Hit@k, che misura la qualità del retrieval.
+
+I risultati sperimentali mostrano che, sul dataset utilizzato, la pipeline baseline ottiene prestazioni migliori rispetto alla pipeline improved sia nella qualità del retrieval (Hit@k = 0.867 contro 0.733) sia nella qualità delle risposte generate (Keyword Score = 0.443 contro 0.427).
+
+Questo evidenzia come tecniche più sofisticate, quali il semantic chunking, non garantiscano automaticamente prestazioni superiori. L'efficacia della pipeline dipende infatti dalle caratteristiche dei documenti e dalla granularità delle informazioni contenute.
+
+Il progetto conferma quindi l'importanza di valutare separatamente retrieval e generazione all'interno di un sistema RAG e dimostra come una valutazione sperimentale sia fondamentale per confrontare differenti strategie di progettazione.
 
 ---
 

@@ -3,10 +3,11 @@ Evaluation pipeline.
 
 Compares baseline and improved
 RAG pipelines on a QA benchmark.
-"""
 
-import csv
-from pathlib import Path
+The evaluation includes:
+- keyword-based score for end-to-end answer quality;
+- Hit@k for retrieval quality.
+"""
 
 import pandas as pd
 
@@ -27,6 +28,7 @@ from src.config import (
     DATA_FOLDER,
 )
 
+
 QUESTIONS_FILE = "evaluation/evaluation_questions.csv"
 OUTPUT_FILE = "evaluation/evaluation_results.csv"
 
@@ -34,9 +36,10 @@ OUTPUT_FILE = "evaluation/evaluation_results.csv"
 def keyword_score(answer: str, expected_keywords: str) -> float:
     """
     Computes a simple keyword-based evaluation score.
+
     The score is the fraction of expected keywords that appear
     in the generated answer. It provides a lightweight proxy
-    for answer correctness.
+    for end-to-end answer correctness.
     """
 
     keywords = [
@@ -59,12 +62,36 @@ def keyword_score(answer: str, expected_keywords: str) -> float:
     return matched / len(keywords)
 
 
+def hit_at_k(retrieved_nodes, expected_document: str) -> int:
+    """
+    Computes Hit@k for retrieval evaluation.
+
+    Hit@k is equal to 1 if at least one of the retrieved chunks
+    comes from the expected document, otherwise it is 0.
+
+    This metric evaluates the retrieval step independently
+    from the final LLM-generated answer.
+    """
+
+    expected_document = expected_document.lower().strip()
+
+    for node in retrieved_nodes:
+        file_name = node.metadata.get("file_name", "").lower()
+
+        if expected_document in file_name:
+            return 1
+
+    return 0
+
+
 def build_base_index():
     """
     Builds the baseline RAG index.
+
     Documents are chunked using fixed-size chunking and stored
     in a ChromaDB vector index.
     """
+
     documents = load_documents_from_folder(DATA_FOLDER)
 
     nodes = build_nodes(
@@ -85,9 +112,11 @@ def build_base_index():
 def build_improved_index():
     """
     Builds the improved RAG index.
+
     Documents are chunked using semantic chunking and stored
     in a ChromaDB vector index.
     """
+
     documents = load_documents_from_folder(DATA_FOLDER)
 
     nodes = build_semantic_nodes(documents)
@@ -101,17 +130,32 @@ def build_improved_index():
     return index
 
 
-def evaluate_pipeline(index, question: str, expected_keywords: str, top_k: int):
+def evaluate_pipeline(
+    index,
+    question: str,
+    expected_keywords: str,
+    expected_document: str,
+    top_k: int,
+):
     """
     Evaluates a single RAG pipeline on one question.
-    The function retrieves relevant chunks, generates an answer,
-    computes the keyword score, and returns both the answer
-    and retrieved context.
+
+    The function:
+    - retrieves relevant chunks;
+    - computes Hit@k on the retrieved chunks;
+    - generates an answer using the retrieved context;
+    - computes the keyword score on the generated answer.
     """
+
     retrieved_nodes = retrieve_context(
         index=index,
         question=question,
         top_k=top_k,
+    )
+
+    retrieval_hit = hit_at_k(
+        retrieved_nodes=retrieved_nodes,
+        expected_document=expected_document,
     )
 
     answer = generate_answer(
@@ -128,19 +172,31 @@ def evaluate_pipeline(index, question: str, expected_keywords: str, top_k: int):
         [node.get_content()[:500] for node in retrieved_nodes]
     )
 
+    retrieved_sources = ", ".join(
+        [
+            node.metadata.get("file_name", "unknown")
+            for node in retrieved_nodes
+        ]
+    )
+
     return {
         "answer": answer,
-        "score": score,
+        "keyword_score": score,
+        "hit_at_k": retrieval_hit,
         "retrieved_chunks": retrieved_text,
+        "retrieved_sources": retrieved_sources,
     }
 
 
 def main():
     """
     Runs the full evaluation process.
+
     It builds both baseline and improved indexes, evaluates them
-    on all questions, saves the results to CSV, and prints average scores.
+    on all questions, saves the results to CSV, and prints
+    average keyword scores and Hit@k values.
     """
+
     print("Building baseline RAG pipeline...")
     base_index = build_base_index()
 
@@ -149,12 +205,27 @@ def main():
 
     questions = pd.read_csv(QUESTIONS_FILE)
 
+    required_columns = {
+        "question",
+        "expected_keywords",
+        "expected_answer",
+        "expected_document",
+    }
+
+    missing_columns = required_columns - set(questions.columns)
+
+    if missing_columns:
+        raise ValueError(
+            f"Missing columns in {QUESTIONS_FILE}: {missing_columns}"
+        )
+
     results = []
 
     for _, row in questions.iterrows():
         question = row["question"]
         expected_keywords = row["expected_keywords"]
         expected_answer = row["expected_answer"]
+        expected_document = row["expected_document"]
 
         print(f"\nEvaluating question: {question}")
 
@@ -162,6 +233,7 @@ def main():
             index=base_index,
             question=question,
             expected_keywords=expected_keywords,
+            expected_document=expected_document,
             top_k=BASE_TOP_K,
         )
 
@@ -169,6 +241,7 @@ def main():
             index=improved_index,
             question=question,
             expected_keywords=expected_keywords,
+            expected_document=expected_document,
             top_k=IMPROVED_TOP_K,
         )
 
@@ -177,13 +250,18 @@ def main():
                 "question": question,
                 "expected_answer": expected_answer,
                 "expected_keywords": expected_keywords,
+                "expected_document": expected_document,
 
                 "base_answer": base_result["answer"],
-                "base_score": base_result["score"],
+                "base_keyword_score": base_result["keyword_score"],
+                "base_hit_at_k": base_result["hit_at_k"],
+                "base_retrieved_sources": base_result["retrieved_sources"],
                 "base_retrieved_chunks": base_result["retrieved_chunks"],
 
                 "improved_answer": improved_result["answer"],
-                "improved_score": improved_result["score"],
+                "improved_keyword_score": improved_result["keyword_score"],
+                "improved_hit_at_k": improved_result["hit_at_k"],
+                "improved_retrieved_sources": improved_result["retrieved_sources"],
                 "improved_retrieved_chunks": improved_result["retrieved_chunks"],
             }
         )
@@ -194,11 +272,17 @@ def main():
     print("\nEvaluation completed.")
     print(f"Results saved to: {OUTPUT_FILE}")
 
-    print("\nAverage Score RAG base:")
-    print(results_df["base_score"].mean())
+    print("\nAverage Keyword Score RAG base:")
+    print(results_df["base_keyword_score"].mean())
 
-    print("\nAverage Score RAG improved:")
-    print(results_df["improved_score"].mean())
+    print("\nAverage Keyword Score RAG improved:")
+    print(results_df["improved_keyword_score"].mean())
+
+    print("\nAverage Hit@k RAG base:")
+    print(results_df["base_hit_at_k"].mean())
+
+    print("\nAverage Hit@k RAG improved:")
+    print(results_df["improved_hit_at_k"].mean())
 
 
 if __name__ == "__main__":

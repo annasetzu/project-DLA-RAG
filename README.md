@@ -149,28 +149,48 @@ La demo Streamlit permette di:
 
 # Valutazione sperimentale
 
-La valutazione viene effettuata tramite un benchmark di domande sui documenti caricati.
+La valutazione viene effettuata tramite un benchmark di domande costruito sui documenti caricati.
 
-Aspetti valutati:
+Per ogni domanda vengono definite:
 
-- accuratezza delle risposte;
-- qualità del retrieval;
-- coerenza semantica;
-- riduzione delle hallucinations;
-- confronto tra baseline e improved RAG.
+- una risposta attesa;
+- un insieme di keyword attese;
+- il documento di riferimento contenente la risposta.
+
+Sono state utilizzate due metriche complementari.
+
+## Keyword Score
+
+Il Keyword Score valuta la qualità end-to-end della pipeline RAG.
+
+Per ogni domanda viene verificata la presenza delle keyword attese nella risposta generata dal modello. Lo score finale corrisponde alla media degli score ottenuti su tutte le domande del benchmark.
+
+## Hit@k
+
+Hit@k valuta esclusivamente la qualità del retrieval.
+
+Per ogni domanda viene verificato se almeno uno dei chunk recuperati appartiene al documento corretto.
+
+Questa metrica permette di valutare separatamente la qualità del retrieval rispetto alla qualità della risposta finale.
 
 ---
 
 # Risultati
 
-| Pipeline | Chunking Strategy | Score medio |
-|---|---|---|
-| Baseline RAG | Fixed-size chunking | 0.583 |
-| Improved RAG | Semantic chunking | 0.506 |
+La valutazione è stata effettuata utilizzando sia una metrica end-to-end (Keyword Score) sia una metrica specifica per il retrieval (Hit@k).
 
-In questa valutazione la pipeline baseline ha ottenuto uno score medio superiore rispetto alla pipeline improved.
+| Pipeline | Keyword Score | Hit@k |
+|-----------|--------------:|------:|
+| Baseline RAG | 0.443 | 0.867 |
+| Improved RAG | 0.427 | 0.733 |
 
-Questo risultato suggerisce che, sul dataset utilizzato, il semantic chunking non ha prodotto un miglioramento quantitativo generale. Una possibile spiegazione è che le slide contengono poco testo e informazioni molto frammentate: in questo scenario, chunk più piccoli e fissi possono risultare più efficaci per query specifiche.
+La pipeline baseline ottiene risultati superiori in entrambe le metriche.
+
+Il Keyword Score mostra che la pipeline baseline genera risposte che contengono mediamente una percentuale leggermente maggiore delle informazioni attese.
+
+La metrica Hit@k evidenzia inoltre una migliore qualità del retrieval: nel benchmark utilizzato la pipeline baseline recupera il documento corretto nell'86.7% dei casi, mentre la pipeline improved lo recupera nel 73.3%.
+
+Questi risultati suggeriscono che, sul dataset considerato, il fixed-size chunking risulta più efficace del semantic chunking. Una possibile spiegazione è che le slide universitarie contengono poco testo e informazioni molto localizzate; in questo contesto chunk più piccoli e regolari facilitano il recupero di informazioni specifiche.
 
 ---
 
